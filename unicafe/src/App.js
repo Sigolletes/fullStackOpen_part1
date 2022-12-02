@@ -12,12 +12,15 @@ const Title = (props) => (
   </div>
 )
 
-const Statistics = (props) => (
+const Statistics = ({good, neutral, bad, all}) => (
   <div>
     <h1>STATISTICS</h1>
-    <h4>Good {props.good}</h4>
-    <h4>Neutral {props.neutral}</h4>
-    <h4>Bad {props.bad}</h4>
+    <h4>Good {good}</h4>
+    <h4>Neutral {neutral}</h4>
+    <h4>Bad {bad}</h4>
+    <h4>All {all}</h4>
+    <h4>Average {(good - bad) / (all)}</h4>
+    <h4>Positive {(good) * 100 / (all)}</h4>
   </div>
 )
 
@@ -32,7 +35,7 @@ const App = () => {
       <Button handleClick={() => setGood(good + 1)} text="Good" />
       <Button handleClick={() => setNeutral(neutral + 1)} text="Neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="Bad" />
-      <Statistics good={good} neutral={neutral} bad={bad} />
+      <Statistics good={good} neutral={neutral} bad={bad} all={good + neutral + bad} />
     </div>
   )
 }
