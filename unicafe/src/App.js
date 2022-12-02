@@ -12,22 +12,29 @@ const Title = (props) => (
   </div>
 )
 
-const Statistics = ({good, neutral, bad, all}) => {
+const StatisticLine = ({ text, value }) => {
+  return (
+    <h4>{text} {value}</h4>
+  )
+}
+
+const Statistics = ({ good, neutral, bad, all }) => {
   if (all > 0) {
     return (
       <div>
         <h1>STATISTICS</h1>
-        <h4>Good {good}</h4>
-        <h4>Neutral {neutral}</h4>
-        <h4>Bad {bad}</h4>
-        <h4>All {all}</h4>
-        <h4>Average {(good - bad) / (all)}</h4>
-        <h4>Positive {(good) * 100 / (all)}</h4>
+        <StatisticLine text="Good" value={good} />
+        <StatisticLine text="Neutral" value={neutral} />
+        <StatisticLine text="Bad" value={bad} />
+        <StatisticLine text="All" value={all} />
+        <StatisticLine text="Average" value={(good - bad) / (all)} />
+        <StatisticLine text="Positive" value={(good) * 100 / (all)} />
       </div>
     )
   } 
   return (
     <div>
+      <h1>STATISTICS</h1>
       <h4>No feedback given</h4>
     </div>
   )
