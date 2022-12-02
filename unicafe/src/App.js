@@ -12,17 +12,26 @@ const Title = (props) => (
   </div>
 )
 
-const Statistics = ({good, neutral, bad, all}) => (
-  <div>
-    <h1>STATISTICS</h1>
-    <h4>Good {good}</h4>
-    <h4>Neutral {neutral}</h4>
-    <h4>Bad {bad}</h4>
-    <h4>All {all}</h4>
-    <h4>Average {(good - bad) / (all)}</h4>
-    <h4>Positive {(good) * 100 / (all)}</h4>
-  </div>
-)
+const Statistics = ({good, neutral, bad, all}) => {
+  if (all > 0) {
+    return (
+      <div>
+        <h1>STATISTICS</h1>
+        <h4>Good {good}</h4>
+        <h4>Neutral {neutral}</h4>
+        <h4>Bad {bad}</h4>
+        <h4>All {all}</h4>
+        <h4>Average {(good - bad) / (all)}</h4>
+        <h4>Positive {(good) * 100 / (all)}</h4>
+      </div>
+    )
+  } 
+  return (
+    <div>
+      <h4>No feedback given</h4>
+    </div>
+  )
+}
 
 const App = () => {
   const [good, setGood] = useState(0)
